@@ -1,27 +1,28 @@
 package com.bh.accounts.rest;
 
+import com.bh.accounts.dto.Account;
+import com.bh.accounts.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping(value = "/account/", method = RequestMethod.GET)
+@RequestMapping(value = "/accounts/")
 public class AccountRestController {
-/*
-    @Value("${2fa.enabled}")
-    private boolean isTwoFaEnabled;
-*/
+    @Autowired
+    private AccountService accountService;
 
-/*
-    @RequestMapping(value = "/register/{login}/{password}", method = RequestMethod.POST)
-    public String register(@PathVariable String login, @PathVariable String password) {
-        User user = userService.register(login, password);
-        String encodedSecret = new Base32().encodeToString(user.getSecret().getBytes());
-
-        // This Base32 encode may usually return a string with padding characters - '='.
-        // QR generator which is user (zxing) does not recognize strings containing symbols other than alphanumeric
-        // So just remove these redundant '=' padding symbols from resulting string
-        return encodedSecret.replace("=", "");
+    @RequestMapping(value = "{customerId}/{name}/{initialCredit}", method = RequestMethod.POST)
+    public String createAccount(@PathVariable String customerId, @PathVariable String name, @PathVariable Integer initialCredit) {
+        return accountService.addAccount(customerId, name, initialCredit == null ? 0 : initialCredit);
     }
-*/
+
+    @RequestMapping(value = "{customerId}", method = RequestMethod.GET)
+    public List<Account> getAccounts(@PathVariable String customerId) {
+        return accountService.getAccounts(customerId);
+    }
 }
