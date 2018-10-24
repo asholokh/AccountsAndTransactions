@@ -2,6 +2,7 @@ package com.bh.accounts.rest;
 
 import com.bh.accounts.dto.Account;
 import com.bh.accounts.service.AccountService;
+import com.bh.accounts.service.AccountsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ public class AccountRestController {
     private AccountService accountService;
 
     @RequestMapping(value = "{customerId}/{name}/{initialCredit}", method = RequestMethod.POST)
-    public String createAccount(@PathVariable String customerId, @PathVariable String name, @PathVariable Integer initialCredit) {
+    public String createAccount(@PathVariable String customerId, @PathVariable String name, @PathVariable Integer initialCredit) throws AccountsException {
         return accountService.addAccount(customerId, name, initialCredit == null ? 0 : initialCredit);
     }
 

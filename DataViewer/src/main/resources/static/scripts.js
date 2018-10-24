@@ -1,17 +1,17 @@
 /**
-$("#btnCancelRegister").click(function () {
+ $("#btnCancelRegister").click(function () {
     window.location.replace("index.html");
 });
 
-$("#btnCancelLogin").click(function () {
+ $("#btnCancelLogin").click(function () {
     window.location.replace("index.html");
 });
 
-$("#btnRegisterDone").click(function () {
+ $("#btnRegisterDone").click(function () {
     window.location.replace("index.html");
 });
 
-$("#btnLogin").click(function () {
+ $("#btnLogin").click(function () {
     $('#msgLoginFailed').hide();
     $.post("/authenticate/" + $("#login").val() + "/" + $("#password").val(), function (data, status) {
         if (data == 'AUTHENTICATED') {
@@ -26,7 +26,7 @@ $("#btnLogin").click(function () {
     });
 });
 
-$("#btnRegister").click(function () {
+ $("#btnRegister").click(function () {
     $.post("/user/register/" + $("#login").val() + "/" + $("#password").val(), function (data, status) {
         if (status == 'success') {
             $("#tokenQr").attr("src", "https://zxing.org/w/chart?cht=qr&chs=250x250&chld=M&choe=UTF-8&chl=otpauth://totp/2FaExample.com?secret=" + data + "&issuer=2FaExample");
@@ -36,7 +36,7 @@ $("#btnRegister").click(function () {
     });
 });
 
-$("#btnTokenVerify").click(function () {
+ $("#btnTokenVerify").click(function () {
     $('#msgTokenCheckFailed').hide();
     $.post("/authenticate/token/" + $("#login").val() + "/" + $("#password").val() + "/" + $("#loginToken").val(), function (data, status) {
         if (data == 'AUTHENTICATED') {
@@ -49,9 +49,9 @@ $("#btnTokenVerify").click(function () {
     });
 });
 
-$("#btnLogout").click(function () {
+ $("#btnLogout").click(function () {
     $.post("/authenticate/logout", function (data, status) {
         window.location.replace("index.html")
     });
 });
-**/
+ **/

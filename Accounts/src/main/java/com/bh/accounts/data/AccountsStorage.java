@@ -23,6 +23,14 @@ public final class AccountsStorage {
         return account.getId();
     }
 
+    public static synchronized void deleteAccount(String customerId, String accountId) {
+        if (!data.containsKey(customerId)) {
+            return;
+        } else {
+            data.get(customerId).removeIf(account -> account.getId().equals(accountId));
+        }
+    }
+
     public static synchronized Optional<List<Account>> getAccounts(String customerId) {
         if (!data.containsKey(customerId)) {
             return Optional.empty();

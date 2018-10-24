@@ -13,7 +13,7 @@ public interface AccountService {
      * @param initialCredit Initial credit. Can be both positive and negative.
      * @return Created account id.
      */
-    String addAccount(String customerId, String name, int initialCredit);
+    String addAccount(String customerId, String name, int initialCredit) throws AccountsException;
 
     /**
      * Gets accounts for given <code>customerId</code>.

@@ -3,16 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>accounts</artifactId>
-
-    <name>Accounts</name>
-    <description>Accounts service</description>
-
     <parent>
         <groupId>com.bh.accountsandtransactions</groupId>
         <artifactId>accountsandtransactions</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <artifactId>DataViewer</artifactId>
+    <name>DataViewer</name>
+    <description>Web Frontend and REST API</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -24,6 +24,6 @@ public class TransactionsRestController {
 
     @RequestMapping(value = "{accountId}/{limit}", method = RequestMethod.GET)
     public List<Transaction> getTansactions(@PathVariable String accountId, @PathVariable Integer limit) {
-        return transactionsService.getTransactions(accountId, limit == null ?  -1 : limit);
+        return transactionsService.getTransactions(accountId, limit == null ? -1 : limit);
     }
 }
