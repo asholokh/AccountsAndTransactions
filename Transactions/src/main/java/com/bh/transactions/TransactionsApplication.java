@@ -1,11 +1,11 @@
-package com.bh.accounts;
+package com.bh.transactions;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AccountsService {
+public class TransactionsApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AccountsService.class, args);
+        SpringApplication.run(TransactionsApplication.class, args);
     }
 }

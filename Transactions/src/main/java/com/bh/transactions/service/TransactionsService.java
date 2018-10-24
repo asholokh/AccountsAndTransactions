@@ -16,7 +16,7 @@ public interface TransactionsService {
 
     /**
      * Gets last <code>limit</code> transactions for given <code>accountId</code>.
-     * If <code>limit</code> is less than 0, all transactions for for given <code>accountId</code> will be returned.
+     * If <code>limit</code> is less than 1, all transactions for for given <code>accountId</code> will be returned.
      *
      * @param accountId Account id
      * @param limit     Amount of last transaction to be returned.

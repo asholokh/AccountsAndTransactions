@@ -26,7 +26,7 @@ public class TransactionsClient {
     private List<Transaction> getTransactions(String accountId, int limit) throws TransactionsClientException {
         RestTemplate restTemplate = new RestTemplate();
 
-        String limitStr = limit > 0 ? Integer.toString(limit) : "";
+        String limitStr = limit > 0 ? Integer.toString(limit) : "0";
         String url = String.format(getTransactionsServiceUrl, accountId, limitStr);
         try {
             return Arrays.asList(restTemplate.getForObject(url, Transaction[].class));

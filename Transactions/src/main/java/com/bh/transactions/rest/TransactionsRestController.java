@@ -6,19 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/transactions/", method = RequestMethod.GET)
+@RequestMapping(value = "/transactions")
 public class TransactionsRestController {
     @Autowired
     private TransactionsService transactionsService;
 
 
-    @RequestMapping(value = "{accountId}/{amount}", method = RequestMethod.POST)
-    public String addTransaction(@PathVariable String accountId, @PathVariable Integer amount) {
+    @RequestMapping(method = RequestMethod.POST)
+    public String addTransaction(@RequestParam("accountId") String accountId, @RequestParam("amount") Integer amount) {
         return transactionsService.addTransaction(accountId, amount);
     }
 

@@ -1,11 +1,11 @@
-package com.bh.transactions;
+package com.bh.dataviewer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TransactionsService {
+public class DataViewerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TransactionsService.class, args);
+        SpringApplication.run(DataViewerApplication.class, args);
     }
 }

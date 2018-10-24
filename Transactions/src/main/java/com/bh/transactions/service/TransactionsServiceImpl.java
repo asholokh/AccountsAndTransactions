@@ -24,7 +24,7 @@ public class TransactionsServiceImpl implements TransactionsService {
 
         List<Transaction> transactionsList = transactions.get();
 
-        if (limit < 0) {
+        if (limit <= 0) {
             return transactionsList;
         }
 
