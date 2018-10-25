@@ -3,6 +3,7 @@ package com.bh.accounts.service;
 import com.bh.accounts.client.TransactionsClient;
 import com.bh.accounts.client.TransactionsClientException;
 import com.bh.accounts.data.AccountsStorage;
+import com.bh.accounts.data.AccountsStorageImpl;
 import com.bh.accounts.dto.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +15,19 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
     @Autowired
     private TransactionsClient transactionsClient;
+    @Autowired()
+    private AccountsStorage accountsStorage;
 
     @Override
     public String addAccount(String customerId, String name, int initialCredit) throws AccountsException {
-        String accountId = AccountsStorage.addAccount(customerId, name);
+        String accountId = accountsStorage.addAccount(customerId, name);
 
         try {
             if (initialCredit > 0) {
                 transactionsClient.createTransaction(accountId, initialCredit);
             }
         } catch (TransactionsClientException e) {
-            AccountsStorage.deleteAccount(customerId, accountId);
+            accountsStorage.deleteAccount(customerId, accountId);
             throw new AccountsException("Account could not be added for customerId: " + customerId, e);
         }
 
@@ -33,6 +36,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<Account> getAccounts(String customerId) {
-        return AccountsStorage.getAccounts(customerId).orElseGet(ArrayList::new);
+        return accountsStorage.getAccounts(customerId).orElseGet(ArrayList::new);
     }
 }
