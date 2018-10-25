@@ -19,6 +19,11 @@ client as they are
 service are supposed to be up and running (Accounts service depends on Transactions service)
 - all data is stored in very simple memory storage (Singleton class)
 
+## Build instructions
+Maven is required to buld the project.
+After Maven installed and project is check out from the repository, execute the following command:
+-- mvn clean install
+
 ## Accounts
 This service is responsible for storing Accounts and retrieving them.
 ### Run instructions:
